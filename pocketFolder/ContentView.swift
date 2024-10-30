@@ -11,17 +11,26 @@ struct ContentView: View {
     
     var body: some View {
         HStack { // Header
-            Image(systemName: "folder.fill")
+            Image(systemName: "square.grid.3x1.folder.fill.badge.plus")
                 .foregroundStyle(.tint)
-            Text("My files")
+            Text("Pocket-Folder")
         }
         .font(.title)
         .bold()
         
-        HStack { // File list
+        ViewThatFits { // File list
+            FileListView()
         }
         
         HStack { // Footer
+            HStack{ // credit
+                Text("Made with")
+                Image(systemName: "heart.fill")
+                    .foregroundStyle(.tint)
+                    .imageScale(.large)
+                Text("by")
+                Link(destination: URL(string: "https://github.com/AwMan3703")!, label: { Text("Aw Man") })
+            }
         }
     }
 }

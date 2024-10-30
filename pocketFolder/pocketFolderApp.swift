@@ -12,13 +12,16 @@ struct pocketFolderApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
-        WindowGroup {
+        WindowGroup { // Pocket window
             ContentView()
-                .frame(width: 600, height: 200)
         }
         .defaultPosition(.top)
         .windowResizability(WindowResizability.contentSize)
         .windowStyle(HiddenTitleBarWindowStyle())
+        
+        Settings { // Settings window
+            SettingsView()
+        }
     }
 }
 
