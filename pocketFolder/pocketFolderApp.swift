@@ -23,7 +23,18 @@ struct pocketFolderApp: App {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
+        setupWindowBackground()
         hideTitleBar()
+    }
+
+    func setupWindowBackground() {
+        guard let window = NSApplication.shared.windows.first else { assertionFailure(); return }
+        let visualEffectView = NSVisualEffectView(frame: window.contentView?.bounds ?? .zero)
+        visualEffectView.autoresizingMask = [.width, .height]
+        visualEffectView.material = .popover
+        visualEffectView.state = .active
+        visualEffectView.blendingMode = .behindWindow
+        window.contentView?.superview?.addSubview(visualEffectView, positioned: .below, relativeTo: window.contentView)
     }
 
     func hideTitleBar() {
