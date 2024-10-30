@@ -12,11 +12,12 @@ struct pocketFolderApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
-        Window(Text("Pocket Folder files"), id: "pocket-window") {
+        WindowGroup {
             ContentView()
+                .frame(width: 600, height: 200)
         }
         .defaultPosition(.top)
-        .defaultSize(width: 100, height: 10)
+        .windowResizability(WindowResizability.contentSize)
         .windowStyle(HiddenTitleBarWindowStyle())
     }
 }

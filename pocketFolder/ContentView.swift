@@ -8,28 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    
     var body: some View {
-        HStack {
-            Label(
-                title: { Text("My files") },
-                icon: { Image(systemName: "folder.fill") }
-            )
-            .font(.title)
-            .bold()
-            .padding()
-        }
-        HStack {
-        }
-        HStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
+        HStack { // Header
+            Image(systemName: "folder.fill")
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("My files")
+        }
+        .font(.title)
+        .bold()
+        
+        HStack { // File list
+        }
+        
+        HStack { // Footer
         }
     }
 }
 
 #Preview {
     ContentView()
-        .position(CGPoint(x: 0.0, y: 0.0))
 }
