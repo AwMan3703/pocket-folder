@@ -12,7 +12,7 @@ struct pocketFolderApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
-        WindowGroup { // Pocket window
+        WindowGroup(Text("Pocket Folder")) { // Pocket window
             ContentView()
         }
         .defaultPosition(.top)

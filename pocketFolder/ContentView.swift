@@ -13,14 +13,16 @@ struct ContentView: View {
         HStack { // Header
             Image(systemName: "square.grid.3x1.folder.fill.badge.plus")
                 .foregroundStyle(.tint)
-            Text("Pocket-Folder")
+            Text("Your pockets")
         }
-        .font(.title)
+        .padding()
+        .font(.title3)
         .bold()
         
         ViewThatFits { // File list
             FileListView()
         }
+        .padding()
         
         HStack { // Footer
             HStack{ // credit
@@ -32,6 +34,7 @@ struct ContentView: View {
                 Link(destination: URL(string: "https://github.com/AwMan3703")!, label: { Text("Aw Man") })
             }
         }
+        .padding()
     }
 }
 
