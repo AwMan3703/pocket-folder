@@ -27,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func hideTitleBar() {
-        guard let window = NSApplication.shared.mainWindow else { assertionFailure(); return }
+        guard let window = NSApplication.shared.windows.first else { assertionFailure(); return }
         window.standardWindowButton(.closeButton)?.isHidden = true
         window.standardWindowButton(.miniaturizeButton)?.isHidden = true
         window.standardWindowButton(.zoomButton)?.isHidden = true
