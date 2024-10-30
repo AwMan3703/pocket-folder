@@ -11,6 +11,8 @@
 		995E91F62CD10E3800120DA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E91F52CD10E3800120DA1 /* ContentView.swift */; };
 		995E91F82CD10E3A00120DA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995E91F72CD10E3A00120DA1 /* Assets.xcassets */; };
 		995E91FB2CD10E3A00120DA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995E91FA2CD10E3A00120DA1 /* Preview Assets.xcassets */; };
+		99D938D22CD262A4006EB02E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D938D12CD262A4006EB02E /* SettingsView.swift */; };
+		99D938D42CD2632D006EB02E /* FileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D938D32CD2632D006EB02E /* FileListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		995E91F72CD10E3A00120DA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		995E91FA2CD10E3A00120DA1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		99D938CA2CD25094006EB02E /* pocketFolder.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = pocketFolder.entitlements; sourceTree = "<group>"; };
+		99D938D12CD262A4006EB02E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		99D938D32CD2632D006EB02E /* FileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,9 +58,11 @@
 			children = (
 				995E91F32CD10E3800120DA1 /* pocketFolderApp.swift */,
 				995E91F52CD10E3800120DA1 /* ContentView.swift */,
+				99D938D12CD262A4006EB02E /* SettingsView.swift */,
 				99D938CA2CD25094006EB02E /* pocketFolder.entitlements */,
 				995E91F72CD10E3A00120DA1 /* Assets.xcassets */,
 				995E91F92CD10E3A00120DA1 /* Preview Content */,
+				99D938D32CD2632D006EB02E /* FileListView.swift */,
 			);
 			path = pocketFolder;
 			sourceTree = "<group>";
@@ -139,6 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99D938D42CD2632D006EB02E /* FileListView.swift in Sources */,
+				99D938D22CD262A4006EB02E /* SettingsView.swift in Sources */,
 				995E91F62CD10E3800120DA1 /* ContentView.swift in Sources */,
 				995E91F42CD10E3800120DA1 /* pocketFolderApp.swift in Sources */,
 			);
