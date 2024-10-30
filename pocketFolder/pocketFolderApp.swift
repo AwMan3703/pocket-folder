@@ -12,9 +12,11 @@ struct pocketFolderApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     var body: some Scene {
-        WindowGroup {
+        Window(Text("Pocket Folder files"), id: "pocket-window") {
             ContentView()
         }
+        .defaultPosition(.top)
+        .defaultSize(width: 100, height: 10)
         .windowStyle(HiddenTitleBarWindowStyle())
     }
 }
@@ -25,7 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func hideTitleBar() {
-        guard let window = NSApplication.shared.windows.first else { assertionFailure(); return }
+        guard let window = NSApplication.shared.mainWindow else { assertionFailure(); return }
         window.standardWindowButton(.closeButton)?.isHidden = true
         window.standardWindowButton(.miniaturizeButton)?.isHidden = true
         window.standardWindowButton(.zoomButton)?.isHidden = true
