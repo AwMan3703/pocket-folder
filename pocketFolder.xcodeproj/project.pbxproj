@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9907332A2CD37B0E00F1B092 /* PathsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990733292CD37B0E00F1B092 /* PathsProvider.swift */; };
 		995E91F42CD10E3800120DA1 /* pocketFolderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E91F32CD10E3800120DA1 /* pocketFolderApp.swift */; };
 		995E91F62CD10E3800120DA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E91F52CD10E3800120DA1 /* ContentView.swift */; };
 		995E91F82CD10E3A00120DA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995E91F72CD10E3A00120DA1 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		990733292CD37B0E00F1B092 /* PathsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathsProvider.swift; sourceTree = "<group>"; };
 		995E91F02CD10E3800120DA1 /* pocketFolder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pocketFolder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		995E91F32CD10E3800120DA1 /* pocketFolderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pocketFolderApp.swift; sourceTree = "<group>"; };
 		995E91F52CD10E3800120DA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				99D938CA2CD25094006EB02E /* pocketFolder.entitlements */,
 				995E91F72CD10E3A00120DA1 /* Assets.xcassets */,
 				995E91F92CD10E3A00120DA1 /* Preview Content */,
+				990733292CD37B0E00F1B092 /* PathsProvider.swift */,
 			);
 			path = pocketFolder;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				99D938D42CD2632D006EB02E /* FileListView.swift in Sources */,
 				99D938D22CD262A4006EB02E /* SettingsView.swift in Sources */,
 				995E91F62CD10E3800120DA1 /* ContentView.swift in Sources */,
+				9907332A2CD37B0E00F1B092 /* PathsProvider.swift in Sources */,
 				995E91F42CD10E3800120DA1 /* pocketFolderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

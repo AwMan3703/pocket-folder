@@ -2,7 +2,7 @@
 //  FileListView.swift
 //  pocketFolder
 //
-//  Created by Daniele Brambilla on 30/10/24.
+//  Created by @AwMan3703 (GitHub) on 30/10/24.
 //
 
 import SwiftUI
