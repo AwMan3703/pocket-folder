@@ -14,6 +14,7 @@ struct pocketFolderApp: App {
     var body: some Scene {
         WindowGroup(Text("Pocket Folder")) { // Pocket window
             ContentView()
+                .ignoresSafeArea()
         }
         .defaultPosition(.top)
         .windowResizability(WindowResizability.contentSize)
