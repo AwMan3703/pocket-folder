@@ -34,12 +34,13 @@ struct pocketFolderApp: App {
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ notification: Notification) {
-        setupWindowBackground()
-        hideTitleBar()
+        guard let pocketWindow = NSApplication.shared.windows.first else { assertionFailure(); return }
+        setupWindowBackground(window: pocketWindow)
+        hideTitleBar(window: pocketWindow)
+        centerWindow(window: pocketWindow)
     }
 
-    func setupWindowBackground() {
-        guard let window = NSApplication.shared.windows.first else { assertionFailure(); return }
+    func setupWindowBackground(window: NSWindow) {
         let visualEffectView = NSVisualEffectView(frame: window.contentView?.bounds ?? .zero)
         visualEffectView.autoresizingMask = [.width, .height]
         visualEffectView.material = .popover
@@ -48,10 +49,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentView?.superview?.addSubview(visualEffectView, positioned: .below, relativeTo: window.contentView)
     }
 
-    func hideTitleBar() {
-        guard let window = NSApplication.shared.windows.first else { assertionFailure(); return }
+    func hideTitleBar(window: NSWindow) {
         window.standardWindowButton(.closeButton)?.isHidden = true
         window.standardWindowButton(.miniaturizeButton)?.isHidden = true
         window.standardWindowButton(.zoomButton)?.isHidden = true
+    }
+    
+    func centerWindow(window: NSWindow) {
+        // Get the main screen size
+        let screen = window.screen
+        if screen == nil { return }
+        
+        guard let screenHeight = screen?.frame.height else { return }
+        guard let screenWidth = screen?.frame.width else { return }
+        let windowWidth = window.frame.width
+        
+        // Position the window at the top-center of the screen
+        let xPosition = (screenWidth - windowWidth) / 2
+        let yPosition = screenHeight - window.frame.height
+        window.setFrameOrigin(NSPoint(x: xPosition, y: yPosition))
     }
 }

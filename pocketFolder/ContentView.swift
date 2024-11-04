@@ -13,27 +13,23 @@ struct ContentView: View {
     
     var body: some View {
         HStack { // Header
-            Image(systemName: "square.grid.3x1.folder.fill.badge.plus")
-                .foregroundStyle(.tint)
-            Text("Your pockets")
+            Image(systemName: "folder.fill")
+                .foregroundStyle(.linearGradient(Gradient(colors: Theme.gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing))
+            Text("Pocket-Folder")
         }
         .padding()
-        .font(.title3)
+        .font(.title2)
         .bold()
         
-        ViewThatFits { // File list
+        HStack { // File list
             FileListView()
         }
-        .padding()
         
         HStack { // Footer
             HStack{ // credit
-                Text("Made with")
-                Image(systemName: "heart.fill")
-                    .foregroundStyle(.tint)
-                    .imageScale(.large)
                 Text("by")
                 Link(destination: URL(string: "https://github.com/AwMan3703")!, label: { Text("Aw Man") })
+                    .foregroundStyle(.linearGradient(Gradient(colors: Theme.gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing))
             }
         }
         .padding()

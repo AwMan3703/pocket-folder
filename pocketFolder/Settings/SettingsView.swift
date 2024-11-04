@@ -12,8 +12,21 @@ struct SettingsView: View {
     
     
     var body: some View {
-        FolderManagerView()
-            .padding()
+        VStack {
+            FolderManagerView()
+        }
+        .padding()
+        
+        HStack{ // credit
+            Text("Made with")
+            Image(systemName: "heart.fill")
+                .foregroundStyle(.linearGradient(Gradient(colors: Theme.gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing))
+                .imageScale(.large)
+            Text("by")
+            Link(destination: URL(string: "https://github.com/AwMan3703")!, label: { Text("Aw Man") })
+                .foregroundStyle(.linearGradient(Gradient(colors: Theme.gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing))
+        }
+        .padding()
     }
 }
 

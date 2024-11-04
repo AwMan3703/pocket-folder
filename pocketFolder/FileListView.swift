@@ -12,7 +12,12 @@ struct FileListView: View {
     
     
     var body: some View {
-        Text("Files here!")
+        HStack {
+            ForEach(dataProvider.paths) { path in
+                Text(path.name)
+            }
+        }
+        .padding()
     }
 }
 
