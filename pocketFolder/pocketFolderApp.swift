@@ -10,11 +10,15 @@ import SwiftUI
 @main
 struct pocketFolderApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var dataProvider = DataProvider()
+    
     
     var body: some Scene {
         WindowGroup(Text("Pocket Folder")) { // Pocket window
             ContentView()
+                .environmentObject(dataProvider)
                 .ignoresSafeArea()
+                .frame(minHeight: 100)
         }
         .defaultPosition(.top)
         .windowResizability(WindowResizability.contentSize)
@@ -22,6 +26,8 @@ struct pocketFolderApp: App {
         
         Settings { // Settings window
             SettingsView()
+                .environmentObject(dataProvider)
+                .frame(minWidth: 500)
         }
     }
 }

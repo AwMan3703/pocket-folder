@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct FileListView: View {
+    @EnvironmentObject var dataProvider: DataProvider
+    
+    
     var body: some View {
         Text("Files here!")
     }
@@ -15,4 +18,5 @@ struct FileListView: View {
 
 #Preview {
     FileListView()
+        .environmentObject(DataProvider())
 }

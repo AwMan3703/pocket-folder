@@ -10,10 +10,10 @@
 import SwiftUI
 
 struct FolderManagerView: View {
+    @EnvironmentObject var dataProvider: DataProvider
     @State private var showFileImporter = false
     @State private var fileImporterFailed = false
     @State private var fileImporterErrorMessage = ""
-    @State private var pocketedPaths = DataProvider.loadPaths()
     @State private var selected = Set<PocketFolder.ID>()
 
     
@@ -69,4 +69,5 @@ struct FolderManagerView: View {
 
 #Preview {
     FolderManagerView()
+        .environmentObject(DataProvider())
 }

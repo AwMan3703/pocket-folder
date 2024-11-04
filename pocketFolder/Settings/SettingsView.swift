@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var dataProvider: DataProvider
+    
+    
     var body: some View {
         FolderManagerView()
             .padding()
@@ -16,4 +19,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environmentObject(DataProvider())
 }

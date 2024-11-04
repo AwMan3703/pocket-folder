@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var dataProvider: DataProvider
+    
     
     var body: some View {
         HStack { // Header
@@ -40,4 +42,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(DataProvider())
 }
