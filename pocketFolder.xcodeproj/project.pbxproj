@@ -16,6 +16,7 @@
 		995E91FB2CD10E3A00120DA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995E91FA2CD10E3A00120DA1 /* Preview Assets.xcassets */; };
 		99D938D22CD262A4006EB02E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D938D12CD262A4006EB02E /* SettingsView.swift */; };
 		99D938D42CD2632D006EB02E /* FileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D938D32CD2632D006EB02E /* FileListView.swift */; };
+		99F707032CD8BC8B000D220C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F707022CD8BC8B000D220C /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
