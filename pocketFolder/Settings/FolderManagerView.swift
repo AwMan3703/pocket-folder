@@ -25,7 +25,6 @@ struct FolderManagerView: View {
                 TableColumn("Name", value: \.name)
                 TableColumn("Path", value: \.path)
             }
-            .frame(height: 100)
             
             HStack {
                 Button(action: {

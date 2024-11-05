@@ -18,7 +18,6 @@ struct pocketFolderApp: App {
             ContentView()
                 .environmentObject(pocketFoldersManager)
                 .ignoresSafeArea()
-                .frame(minHeight: 100)
         }
         .defaultPosition(.top)
         .windowResizability(WindowResizability.contentSize)
@@ -27,7 +26,7 @@ struct pocketFolderApp: App {
         Settings { // Settings window
             SettingsView()
                 .environmentObject(pocketFoldersManager)
-                .frame(minWidth: 500)
+                .frame(minWidth: 500, minHeight: 400)
         }
     }
 }

@@ -12,17 +12,32 @@ struct FileListView: View {
     
     
     var body: some View {
-        HStack {
-            ForEach(pocketFoldersManager.folders, id: \.path) { folder in
-                if let files = try? FileManager.default.contentsOfDirectory(atPath: folder.path) {
-                    
-                    ForEach(files, id: \.self) { file in
-                        Text(file)
+        if pocketFoldersManager.folders.isEmpty {
+            Text("Go to Settings (CMD + ,) and add folders to your pockets")
+                .foregroundStyle(.secondary)
+        } else {
+            ScrollView(.horizontal) {
+                HStack(alignment: .center) {
+                    ForEach(pocketFoldersManager.folders, id: \.path) { folder in
+                        if let files = try? FileManager.default.contentsOfDirectory(atPath: folder.path) {
+                            ForEach(files, id: \.self) { file in
+                                Text(file)
+                            }
+                        } else {
+                            VStack {
+                                Image(systemName: "exclamationmark.triangle")
+                                Text("\(folder.name)")
+                                    .fixedSize()
+                                    .bold()
+                                Text("Error loading files")
+                                    .fixedSize()
+                            }
+                        }
                     }
+                    .padding(.horizontal)
                 }
             }
         }
-        .padding()
     }
 }
 
