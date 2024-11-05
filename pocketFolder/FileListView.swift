@@ -17,11 +17,15 @@ struct FileListView: View {
                 .foregroundStyle(.secondary)
         } else {
             ScrollView(.horizontal) {
-                HStack(alignment: .center) {
+                HStack {
                     ForEach(pocketFoldersManager.folders, id: \.path) { folder in
-                        if let files = try? FileManager.default.contentsOfDirectory(atPath: folder.path) {
+                        let path = folder.path
+                        
+                        if let files = try? FileManager.default.contentsOfDirectory(atPath: path).filter({ name in
+                            !name.starts(with: ".") // Filter out system files
+                        }) {
                             ForEach(files, id: \.self) { file in
-                                Text(file)
+                                FilePreviewView(filePath: "~\(path)/\(file)")
                             }
                         } else {
                             VStack {
@@ -29,7 +33,7 @@ struct FileListView: View {
                                 Text("\(folder.name)")
                                     .fixedSize()
                                     .bold()
-                                Text("Error loading files")
+                                Text("Error reading files from \(folder.path)")
                                     .fixedSize()
                             }
                         }

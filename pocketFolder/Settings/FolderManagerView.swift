@@ -46,7 +46,7 @@ struct FolderManagerView: View {
                     // ADD ITEM LOGIC
                     print("Granted access to \(url.path)")
                     if pocketFoldersManager.folders.contains(where: { item in
-                        // If the path already exists, ignore it
+                        // Ignore duplicate entries
                         item.path == url.path
                     }) { break }
                     pocketFoldersManager.folders.insert(PocketFolder(pathURL: url), at: 0)

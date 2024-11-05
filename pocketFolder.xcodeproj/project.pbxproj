@@ -13,7 +13,7 @@
 		995E91F62CD10E3800120DA1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 995E91F52CD10E3800120DA1 /* ContentView.swift */; };
 		995E91F82CD10E3A00120DA1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995E91F72CD10E3A00120DA1 /* Assets.xcassets */; };
 		995E91FB2CD10E3A00120DA1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 995E91FA2CD10E3A00120DA1 /* Preview Assets.xcassets */; };
-		99A346DB2CDA4862000A34DA /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A346DA2CDA4862000A34DA /* Data.swift */; };
+		9997CDF52CDA89E50089FC2A /* FilePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9997CDF42CDA89E50089FC2A /* FilePreviewView.swift */; };
 		99D938D22CD262A4006EB02E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D938D12CD262A4006EB02E /* SettingsView.swift */; };
 		99D938D42CD2632D006EB02E /* FileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D938D32CD2632D006EB02E /* FileListView.swift */; };
 		99F707032CD8BC8B000D220C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F707022CD8BC8B000D220C /* Theme.swift */; };
@@ -27,7 +27,7 @@
 		995E91F52CD10E3800120DA1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		995E91F72CD10E3A00120DA1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		995E91FA2CD10E3A00120DA1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		99A346DA2CDA4862000A34DA /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		9997CDF42CDA89E50089FC2A /* FilePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePreviewView.swift; sourceTree = "<group>"; };
 		99D938CA2CD25094006EB02E /* pocketFolder.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = pocketFolder.entitlements; sourceTree = "<group>"; };
 		99D938D12CD262A4006EB02E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		99D938D32CD2632D006EB02E /* FileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListView.swift; sourceTree = "<group>"; };
@@ -58,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				99F707022CD8BC8B000D220C /* Theme.swift */,
-				99A346DA2CDA4862000A34DA /* Data.swift */,
 				990733372CD3F6B800F1B092 /* Classes.swift */,
 				995E91F22CD10E3800120DA1 /* pocketFolder */,
 				995E91F12CD10E3800120DA1 /* Products */,
@@ -76,12 +75,13 @@
 		995E91F22CD10E3800120DA1 /* pocketFolder */ = {
 			isa = PBXGroup;
 			children = (
+				99D938CA2CD25094006EB02E /* pocketFolder.entitlements */,
+				995E91F72CD10E3A00120DA1 /* Assets.xcassets */,
 				995E91F32CD10E3800120DA1 /* pocketFolderApp.swift */,
 				995E91F52CD10E3800120DA1 /* ContentView.swift */,
 				99D938D32CD2632D006EB02E /* FileListView.swift */,
+				9997CDF42CDA89E50089FC2A /* FilePreviewView.swift */,
 				990733392CD4052100F1B092 /* Settings */,
-				99D938CA2CD25094006EB02E /* pocketFolder.entitlements */,
-				995E91F72CD10E3A00120DA1 /* Assets.xcassets */,
 				995E91F92CD10E3A00120DA1 /* Preview Content */,
 			);
 			path = pocketFolder;
@@ -170,8 +170,8 @@
 				99D938D22CD262A4006EB02E /* SettingsView.swift in Sources */,
 				990733382CD3F6B800F1B092 /* Classes.swift in Sources */,
 				9907333D2CD4055100F1B092 /* FolderManagerView.swift in Sources */,
+				9997CDF52CDA89E50089FC2A /* FilePreviewView.swift in Sources */,
 				995E91F62CD10E3800120DA1 /* ContentView.swift in Sources */,
-				99A346DB2CDA4862000A34DA /* Data.swift in Sources */,
 				995E91F42CD10E3800120DA1 /* pocketFolderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +305,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = pocketFolder/pocketFolder.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -334,6 +335,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = pocketFolder/pocketFolder.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

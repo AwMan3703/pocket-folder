@@ -23,13 +23,10 @@ struct ContentView: View {
 
         // File list
         FileListView()
-            .frame(width: 600)
-            .fixedSize(horizontal: true, vertical: false)
     }
 }
 
 #Preview {
     ContentView()
         .environmentObject(PocketFoldersManager())
-        .fixedSize()
 }

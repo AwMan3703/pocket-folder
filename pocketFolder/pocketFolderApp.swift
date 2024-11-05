@@ -18,10 +18,12 @@ struct pocketFolderApp: App {
             ContentView()
                 .environmentObject(pocketFoldersManager)
                 .ignoresSafeArea()
+                .frame(width: 700)
+                .fixedSize()
         }
         .defaultPosition(.top)
-        .windowResizability(WindowResizability.contentSize)
         .windowStyle(HiddenTitleBarWindowStyle())
+        .windowResizability(WindowResizability.contentSize)
         
         Settings { // Settings window
             SettingsView()
