@@ -8,13 +8,18 @@
 import SwiftUI
 
 struct FileListView: View {
-    @EnvironmentObject var dataProvider: DataProvider
+    @EnvironmentObject var pocketFoldersManager: PocketFoldersManager
     
     
     var body: some View {
         HStack {
-            ForEach(dataProvider.paths) { path in
-                Text(path.name)
+            ForEach(pocketFoldersManager.folders, id: \.path) { folder in
+                if let files = try? FileManager.default.contentsOfDirectory(atPath: folder.path) {
+                    
+                    ForEach(files, id: \.self) { file in
+                        Text(file)
+                    }
+                }
             }
         }
         .padding()
@@ -23,5 +28,5 @@ struct FileListView: View {
 
 #Preview {
     FileListView()
-        .environmentObject(DataProvider())
+        .environmentObject(PocketFoldersManager())
 }

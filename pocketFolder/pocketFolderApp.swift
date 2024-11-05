@@ -10,13 +10,13 @@ import SwiftUI
 @main
 struct pocketFolderApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject private var dataProvider = DataProvider()
+    @StateObject private var pocketFoldersManager = PocketFoldersManager()
     
     
     var body: some Scene {
-        WindowGroup(Text("Pocket Folder")) { // Pocket window
+        WindowGroup(Text("Pocket")) { // Pocket window
             ContentView()
-                .environmentObject(dataProvider)
+                .environmentObject(pocketFoldersManager)
                 .ignoresSafeArea()
                 .frame(minHeight: 100)
         }
@@ -26,7 +26,7 @@ struct pocketFolderApp: App {
         
         Settings { // Settings window
             SettingsView()
-                .environmentObject(dataProvider)
+                .environmentObject(pocketFoldersManager)
                 .frame(minWidth: 500)
         }
     }

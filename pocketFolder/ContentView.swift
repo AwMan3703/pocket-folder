@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var dataProvider: DataProvider
+    @EnvironmentObject var pocketFoldersManager: PocketFoldersManager
     
     
     var body: some View {
@@ -38,5 +38,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(DataProvider())
+        .environmentObject(PocketFoldersManager())
 }

@@ -10,7 +10,7 @@
 import SwiftUI
 
 struct FolderManagerView: View {
-    @EnvironmentObject var dataProvider: DataProvider
+    @EnvironmentObject var pocketFoldersManager: PocketFoldersManager
     @State private var showFileImporter = false
     @State private var fileImporterFailed = false
     @State private var fileImporterErrorMessage = ""
@@ -21,7 +21,7 @@ struct FolderManagerView: View {
         Text("Select folders to access from your pockets")
         
         VStack {
-            Table(dataProvider.paths, selection: $selected) {
+            Table(pocketFoldersManager.folders, selection: $selected) {
                 TableColumn("Name", value: \.name)
                 TableColumn("Path", value: \.path)
             }
@@ -34,7 +34,7 @@ struct FolderManagerView: View {
                 
                 Button(role: .destructive, action: {
                     // REMOVE ITEM LOGIC
-                    dataProvider.paths.removeAll(where: { item in
+                    pocketFoldersManager.folders.removeAll(where: { item in
                         selected.contains(item.id)
                     })
                     selected.removeAll()
@@ -46,11 +46,11 @@ struct FolderManagerView: View {
                 case .success(let url):
                     // ADD ITEM LOGIC
                     print("Granted access to \(url.path)")
-                    if dataProvider.paths.contains(where: { item in
+                    if pocketFoldersManager.folders.contains(where: { item in
                         // If the path already exists, ignore it
                         item.path == url.path
                     }) { break }
-                    dataProvider.paths.insert(PocketFolder(pathURL: url), at: 0)
+                    pocketFoldersManager.folders.insert(PocketFolder(pathURL: url), at: 0)
                     break
                 case .failure(let err):
                     fileImporterFailed = true
@@ -67,5 +67,5 @@ struct FolderManagerView: View {
 
 #Preview {
     FolderManagerView()
-        .environmentObject(DataProvider())
+        .environmentObject(PocketFoldersManager())
 }

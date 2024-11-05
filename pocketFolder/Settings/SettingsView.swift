@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var dataProvider: DataProvider
+    @EnvironmentObject var pocketFoldersManager: PocketFoldersManager
     
     
     var body: some View {
@@ -32,5 +32,5 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
-        .environmentObject(DataProvider())
+        .environmentObject(PocketFoldersManager())
 }

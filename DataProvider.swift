@@ -10,22 +10,22 @@ import SwiftUI
 import Foundation
 
 
-class DataProvider: ObservableObject {
-    @Published var paths: [PocketFolder] = DataProvider.loadPaths() {
+class PocketFoldersManager: ObservableObject {
+    @Published var folders: [PocketFolder] = PocketFoldersManager.loadFolders() {
         // Automatically save whenever paths is updated
-        didSet { savePaths() }
+        didSet { saveFolders() }
     }
     
     
-    public func savePaths() {
+    public func saveFolders() {
         // Encode and save to UserDefaults
-        if let encoded = try? JSONEncoder().encode(self.paths) {
+        if let encoded = try? JSONEncoder().encode(self.folders) {
             UserDefaults.standard.set(encoded, forKey: "pocketedPaths")
         }
         print("Saved folders")
     }
     
-    private static func loadPaths() -> [PocketFolder] {
+    private static func loadFolders() -> [PocketFolder] {
         // Decode from UserDefaults if data exists
         if let savedPaths = UserDefaults.standard.data(forKey: "pocketedPaths"),
            let decoded = try? JSONDecoder().decode([PocketFolder].self, from: savedPaths) {
