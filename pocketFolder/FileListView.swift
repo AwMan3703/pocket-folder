@@ -9,7 +9,8 @@ import SwiftUI
 
 struct FileListView: View {
     @EnvironmentObject var pocketFoldersManager: PocketFoldersManager
-    
+    let files = try? FileManager.default.contentsOfDirectory(atPath: "/Users/danielebrambilla/Desktop")
+
     
     var body: some View {
         if pocketFoldersManager.folders.isEmpty {
@@ -22,18 +23,26 @@ struct FileListView: View {
                         let path = folder.path
                         
                         if let files = try? FileManager.default.contentsOfDirectory(atPath: path).filter({ name in
-                            !name.starts(with: ".") // Filter out system files
+                            !name.starts(with: /[\.\$]/) // Filter out system files
                         }) {
-                            ForEach(files, id: \.self) { file in
-                                FilePreviewView(filePath: "~\(path)/\(file)")
+                            if files.isEmpty {
+                                HStack {
+                                    Image(systemName: "nosign")
+                                    Text("\(folder.name) is empty")
+                                }
+                                .foregroundStyle(.secondary)
+                            } else {
+                                ForEach(files, id: \.self) { file in
+                                    FilePreviewView(filePath: "\(path)/\(file)")
+                                }
                             }
                         } else {
                             VStack {
                                 Image(systemName: "exclamationmark.triangle")
-                                Text("\(folder.name)")
+                                Text("Error reading files from \(folder.name)")
                                     .fixedSize()
                                     .bold()
-                                Text("Error reading files from \(folder.path)")
+                                Text("\(folder.path)")
                                     .fixedSize()
                             }
                         }
