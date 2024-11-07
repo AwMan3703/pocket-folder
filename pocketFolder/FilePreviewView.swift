@@ -17,5 +17,5 @@ struct FilePreviewView: View {
 }
 
 #Preview {
-    FilePreviewView(filePath: "~/Storage/desktop2.jpeg")
+    FilePreviewView(filePath: "../assets/icon.png")
 }

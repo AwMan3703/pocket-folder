@@ -26,8 +26,9 @@ struct FileListView: View {
                             !name.starts(with: ".")
                         }) {
                             if files.isEmpty {
-                                HStack {
+                                VStack {
                                     Image(systemName: "nosign")
+                                        .imageScale(.large)
                                     Text("\(folder.name) is empty")
                                 }
                                 .foregroundStyle(.secondary)
@@ -48,6 +49,7 @@ struct FileListView: View {
                         }
                     }
                     .padding(.horizontal)
+                    .padding(.bottom)
                 }
             }
         }
