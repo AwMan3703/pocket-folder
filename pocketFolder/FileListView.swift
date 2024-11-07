@@ -9,13 +9,13 @@ import SwiftUI
 
 struct FileListView: View {
     @EnvironmentObject var pocketFoldersManager: PocketFoldersManager
-    let files = try? FileManager.default.contentsOfDirectory(atPath: "/Users/danielebrambilla/Desktop")
 
     
     var body: some View {
         if pocketFoldersManager.folders.isEmpty {
             Text("Go to Settings (CMD + ,) and add folders to your pockets")
                 .foregroundStyle(.secondary)
+                .padding(.bottom)
         } else {
             ScrollView(.horizontal) {
                 HStack {

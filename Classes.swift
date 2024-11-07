@@ -8,32 +8,89 @@
     
 
 import Foundation
+import SwiftUI
+import Combine
 
 
 class PocketFoldersManager: ObservableObject {
     @Published var folders: [PocketFolder] = PocketFoldersManager.loadFolders() {
-        // Automatically save whenever paths is updated
-        didSet { saveFolders() }
+        didSet {
+            saveFolders()
+            startWatchingNewFolders()
+        }
+    }
+    
+    private var folderWatchers: [URL: DispatchSourceFileSystemObject] = [:]
+
+    init() {
+        startWatchingFolders()
     }
 
+    private func startWatchingFolders() {
+        for folder in folders {
+            watch(folder: folder)
+        }
+    }
+    
+    private func startWatchingNewFolders() {
+        // Watch any folder that is not currently being watched
+        for folder in folders {
+            let url = URL(fileURLWithPath: folder.path)
+            if folderWatchers[url] == nil {
+                watch(folder: folder)
+            }
+        }
+    }
+
+    private func watch(folder: PocketFolder) {
+        let url = URL(fileURLWithPath: folder.path)
+        let folderDescriptor = open(folder.path, O_EVTONLY)
+
+        let watcher = DispatchSource.makeFileSystemObjectSource(fileDescriptor: folderDescriptor,
+                                                                eventMask: [.write, .delete, .extend, .attrib, .link],
+                                                                queue: DispatchQueue.main)
+        
+        watcher.setEventHandler { [weak self] in
+            self?.objectWillChange.send()
+            // Update the view when an event occurs in the folder
+            DispatchQueue.main.async { [weak self] in
+                self?.reloadFolderContents(for: folder)
+            }
+        }
+        
+        watcher.setCancelHandler {
+            close(folderDescriptor)
+        }
+
+        watcher.resume()
+        folderWatchers[url] = watcher
+    }
+
+    private func reloadFolderContents(for folder: PocketFolder) {
+        // Trigger view update to refresh file list
+        objectWillChange.send()
+    }
 
     public func saveFolders() {
-        // Encode and save to UserDefaults
         if let encoded = try? JSONEncoder().encode(self.folders) {
             UserDefaults.standard.set(encoded, forKey: "pocketedPaths")
         }
-        print("Saved folders")
     }
 
     private static func loadFolders() -> [PocketFolder] {
-        // Decode from UserDefaults if data exists
         if let savedPaths = UserDefaults.standard.data(forKey: "pocketedPaths"),
            let decoded = try? JSONDecoder().decode([PocketFolder].self, from: savedPaths) {
-            print("Loaded folders")
             return decoded
         } else { return [] }
     }
+
+    deinit {
+        for watcher in folderWatchers.values {
+            watcher.cancel()
+        }
+    }
 }
+
 
 
 class PocketFolder: Identifiable, Encodable, Decodable {
