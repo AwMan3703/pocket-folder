@@ -21,9 +21,13 @@ struct FileListView: View {
                 HStack {
                     ForEach(pocketFoldersManager.folders, id: \.path) { folder in
                         let path = folder.path
+                        let excluded = ["$RECYCLE.BIN", "desktop.ini"]
                         
                         if let files = try? FileManager.default.contentsOfDirectory(atPath: path).filter({ name in
-                            !name.starts(with: ".")
+                            // Filter out system files
+                            !name.starts(with: ".") &&
+                            // Filter out excluded files
+                            !excluded.contains(where: { exclude in name == exclude })
                         }) {
                             if files.isEmpty {
                                 VStack {
