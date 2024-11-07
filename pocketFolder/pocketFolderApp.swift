@@ -14,21 +14,18 @@ struct pocketFolderApp: App {
     
     
     var body: some Scene {
-        WindowGroup(Text("Pocket")) { // Pocket window
+        MenuBarExtra("Pocket", systemImage: "briefcase") {
             ContentView()
                 .environmentObject(pocketFoldersManager)
                 .ignoresSafeArea()
                 .frame(width: 700)
                 .fixedSize()
         }
-        .defaultPosition(.top)
-        .windowStyle(HiddenTitleBarWindowStyle())
-        .windowResizability(WindowResizability.contentSize)
-        
-        Settings { // Settings window
+        .menuBarExtraStyle(.window)
+
+        Settings {
             SettingsView()
                 .environmentObject(pocketFoldersManager)
-                .frame(minWidth: 500, minHeight: 400)
         }
     }
 }
@@ -38,12 +35,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let pocketWindow = NSApplication.shared.windows.first else { assertionFailure(); return }
         setupWindowBackground(window: pocketWindow)
         hideTitleBar(window: pocketWindow)
-        centerWindow(window: pocketWindow)
+        centerWindow(window: pocketWindow, topMargin: 30.0)
     }
 
     func setupWindowBackground(window: NSWindow) {
         let visualEffectView = NSVisualEffectView(frame: window.contentView?.bounds ?? .zero)
-        visualEffectView.autoresizingMask = [.width, .height]
         visualEffectView.material = .popover
         visualEffectView.state = .active
         visualEffectView.blendingMode = .behindWindow
@@ -51,23 +47,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func hideTitleBar(window: NSWindow) {
+        window.titleVisibility = .hidden
+        window.titlebarAppearsTransparent = true
         window.standardWindowButton(.closeButton)?.isHidden = true
         window.standardWindowButton(.miniaturizeButton)?.isHidden = true
         window.standardWindowButton(.zoomButton)?.isHidden = true
     }
     
-    func centerWindow(window: NSWindow) {
+    func centerWindow(window: NSWindow, topMargin: CGFloat) {
         // Get the main screen size
-        let screen = window.screen
-        if screen == nil { return }
+        guard let screen = window.screen else { return }
         
-        guard let screenHeight = screen?.frame.height else { return }
-        guard let screenWidth = screen?.frame.width else { return }
+        let screenHeight = screen.frame.height
+        let screenWidth = screen.frame.width
         let windowWidth = window.frame.width
         
         // Position the window at the top-center of the screen
         let xPosition = (screenWidth - windowWidth) / 2
-        let yPosition = screenHeight - window.frame.height
+        let yPosition = screenHeight - (window.frame.height + topMargin)
         window.setFrameOrigin(NSPoint(x: xPosition, y: yPosition))
     }
 }
