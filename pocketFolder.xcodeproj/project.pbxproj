@@ -31,6 +31,7 @@
 		99D938CA2CD25094006EB02E /* pocketFolder.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = pocketFolder.entitlements; sourceTree = "<group>"; };
 		99D938D12CD262A4006EB02E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		99D938D32CD2632D006EB02E /* FileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileListView.swift; sourceTree = "<group>"; };
+		99ECF8592CDD1AAC00E18769 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		99F707022CD8BC8B000D220C /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -75,6 +76,7 @@
 		995E91F22CD10E3800120DA1 /* pocketFolder */ = {
 			isa = PBXGroup;
 			children = (
+				99ECF8592CDD1AAC00E18769 /* Info.plist */,
 				99D938CA2CD25094006EB02E /* pocketFolder.entitlements */,
 				995E91F72CD10E3A00120DA1 /* Assets.xcassets */,
 				995E91F32CD10E3800120DA1 /* pocketFolderApp.swift */,
@@ -317,8 +319,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pocketFolder/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Pocket Folder";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -348,8 +352,10 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = pocketFolder/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Pocket Folder";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
