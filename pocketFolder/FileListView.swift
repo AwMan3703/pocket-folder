@@ -23,7 +23,7 @@ struct FileListView: View {
                         let path = folder.path
                         
                         if let files = try? FileManager.default.contentsOfDirectory(atPath: path).filter({ name in
-                            !name.starts(with: /[\.\$]/) // Filter out system files
+                            !name.starts(with: ".")
                         }) {
                             if files.isEmpty {
                                 HStack {
