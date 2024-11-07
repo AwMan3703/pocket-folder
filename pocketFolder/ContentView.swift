@@ -9,17 +9,36 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var pocketFoldersManager: PocketFoldersManager
+    @Environment(\.openSettings) private var openSettings
     
     
     var body: some View {
-        HStack { // Header
-            Image(systemName: "folder.fill")
-                .foregroundStyle(.linearGradient(Gradient(colors: Theme.gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing))
-            Text("Pockets")
-                .bold()
+        // Header
+        HStack {
+            HStack {
+                Image(systemName: "folder.fill")
+                    .foregroundStyle(.linearGradient(Gradient(colors: Theme.gradientColors), startPoint: .topLeading, endPoint: .bottomTrailing))
+                Text("Pockets")
+                    .bold()
+            }
+            .font(.title3)
+            
+            Spacer()
+            
+            Button(action: {
+                NSApp.activate()
+                openSettings()
+            }, label: {
+                HStack {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
+                .foregroundStyle(.primary)
+            })
+            // Native settings button
+            //SettingsLink()
         }
-        .font(.title3)
-        .padding(.vertical)
+        .padding()
 
         // File list
         FileListView()
